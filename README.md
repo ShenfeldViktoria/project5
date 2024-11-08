@@ -1,10 +1,5 @@
-```mermaid
 classDiagram
     direction TB
-    class PizzaSystem
-
-    class Context
-
     class PizzaType {
         <<enumeration>>
         MARGARITA
@@ -20,10 +15,12 @@ classDiagram
 
     class PizzaHunters
 
-    PizzaSystem --> Context : composition
-    Context ..> PizzaType : uses
-    Context --> Pizza : factory_method
-    Pizza <|-- PizzaMargarita : inheritance
-    Pizza <|-- PizzaCarbonara : inheritance
-    Pizza <|-- PizzaHunters : inheritance
+    class Factory {
+        create_pizza(pizza_type: PizzaType)
+    }
 
+    Pizza <|-- PizzaMargarita
+    Pizza <|-- PizzaCarbonara
+    Pizza <|-- PizzaHunters
+    Factory --> PizzaType : uses
+    Factory --> Pizza : creates

@@ -1,37 +1,28 @@
 ```mermaid
 classDiagram
+    direction LR
+    class Pizza {
+        -price: float
+        +get_price(): float
+    }
     class PizzaType {
         <<enumeration>>
         MARGARITA
         CARBONARA
         HUNTERS
     }
-
-    class Pizza {
-        -float __price
-        +get_price() float
-    }
-
     class PizzaMargarita {
-        +__init__()
+        +get_price(): float
     }
     class PizzaCarbonara {
-        +__init__()
+        +get_price(): float
     }
     class PizzaHunters {
-        +__init__()
+        +get_price(): float
     }
-
-    class Client {
-        +create_pizza(pizza_type: PizzaType) Pizza
-    }
-
     Pizza <|-- PizzaMargarita
     Pizza <|-- PizzaCarbonara
     Pizza <|-- PizzaHunters
-    Client ..> PizzaType : "depends on"
-    Client ..> Pizza : "creates"
-    Pizza <|-- Client : "uses"
+    create_pizza ..> PizzaType : uses
+    create_pizza --> Pizza : returns
 
-    PizzaType : <<enumeration>>
-    Client : create_pizza()

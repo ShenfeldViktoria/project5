@@ -1,4 +1,4 @@
-```PlantUML
+```UML
 @startuml
 class PizzaType {
     <<enumeration>>
